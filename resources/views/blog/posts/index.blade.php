@@ -20,7 +20,7 @@
                                         <td>
                                             <a href="#">{{$post->title}}</a>
                                         </td>
-                                        <td>{{($post->is_published) ? \Carbon\Carbon::parse($post->published_at)->format('d.m.Y') : ''}}</td>
+                                        <td>{{\Carbon\Carbon::parse($post->published_at)->format('d.m.Y') }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
