@@ -22,13 +22,14 @@ class blogPostReprository extends coreReprository{
             'title',
             'slug',
             'is_published',
-            'created_at',
+            'published_at',
         ];
 
 
         $item = $this->startCondition()
+                ->where('is_published', '=', '1')
                 ->select($columns)
-                ->orderBy('id', 'DESC')
+                ->orderBy('id', 'ASC')
                 // Благодоря связи с моделью user, сначала получаем необходимые данные, а потом выгружаем их на страницу
                 ->with(['user' => function($query){
                     $query->select('id','name');
