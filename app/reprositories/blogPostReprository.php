@@ -47,7 +47,7 @@ class blogPostReprository extends coreReprository{
             'id',
             'user_id',
             'title',
-            'content_html',
+            'content',
             'is_published',
             'published_at',
         ];
@@ -67,7 +67,7 @@ class blogPostReprository extends coreReprository{
             'id',
             'user_id',
             'title',
-            'content_html',
+            'content',
             'is_published',
             'published_at',
         ];
@@ -90,7 +90,7 @@ class blogPostReprository extends coreReprository{
             'id',
             'user_id',
             'title',
-            'content_html',
+            'content',
             'is_published',
             'published_at',
         ];
@@ -103,4 +103,3 @@ class blogPostReprository extends coreReprository{
     }
 
 }
-

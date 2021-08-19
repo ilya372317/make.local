@@ -20,8 +20,8 @@ class blogPostObserver
         //
     }
 
-    public function creating(BlogPost $blogPost){
-        $this->setHtml($blogPost);
+    public function creating(BlogPost $blogPost)
+    {
         $this->setPublishTime($blogPost);
         $this->unsetPublishTime($blogPost);
         $this->setSlug($blogPost);
@@ -36,6 +36,13 @@ class blogPostObserver
     public function updated(BlogPost $blogPost)
     {
         //
+    }
+
+    public function updating(BlogPost $blogPost)
+    {
+        $this->setPublishTime($blogPost);
+        $this->unsetPublishTime($blogPost);
+        $this->setSlug($blogPost);
     }
 
     /**
@@ -96,9 +103,5 @@ class blogPostObserver
 
     }
 
-    private function setHtml(BlogPost $blogPost){
-        //Сырая реализация, в задумке метод обрабатывает данные отправленные пользователем,
-        // и только потом присваивает значения свойства объекту. Сейчас все происходит без обработки
-        $blogPost->content_html = $blogPost->content_raw;
-    }
+
 }

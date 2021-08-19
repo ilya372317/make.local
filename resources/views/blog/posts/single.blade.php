@@ -13,7 +13,7 @@
                         </div>
                         <br>
                     </div>
-                    <p class="card-text">{{$post->content_html}}</p>
+                    <p class="card-text">{{$post->content}}</p>
                 </div>
              </div>
         </div>
