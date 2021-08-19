@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\blogPostStoreRequest;
+use App\Http\Requests\blogPostUpdateRequest;
 use App\Http\Resources\blogPostResource;
 use App\Models\BlogPost;
 use App\reprositories\blogPostReprository;
 use Illuminate\Http\Request;
+use Response;
 
 class blogPostController extends baseController
 {
@@ -67,9 +68,17 @@ class blogPostController extends baseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(blogPostUpdateRequest $request, $id)
     {
-        //
+
+        $item = $this->blogPostReprository
+                    ->getForApiSingle($id);
+
+        $data = $request->validated();
+        $result = $item->update($data);
+
+        return $item;
+
     }
 
     /**
@@ -80,6 +89,14 @@ class blogPostController extends baseController
      */
     public function destroy($id)
     {
-        //
+        $item = $this->blogPostReprository
+                    ->getForApiSingle($id);
+
+        $result = $item->delete();
+
+        if($result){
+
+        return Response('Запись успешно удалена');
     }
+  }
 }
