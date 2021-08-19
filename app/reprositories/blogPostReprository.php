@@ -25,8 +25,7 @@ class blogPostReprository extends coreReprository{
             'published_at',
         ];
 
-
-        $item = $this->startCondition()
+        $paginator = $this->startCondition()
                 ->where('is_published', '=', '1')
                 ->select($columns)
                 ->orderBy('id', 'ASC')
@@ -35,6 +34,25 @@ class blogPostReprository extends coreReprository{
                     $query->select('id','name');
                 }])
                 ->paginate($itemPerPage);
+
+        return $paginator;
+    }
+
+    // Метод получает данные для вывода одиночной записи
+    public function getForView($id){
+
+        $columns = [
+            'id',
+            'user_id',
+            'title',
+            'content_html',
+            'is_published',
+            'published_at',
+        ];
+
+        $item = $this->startCondition()
+                ->select($columns)
+                ->findOrFail($id);
 
         return $item;
     }

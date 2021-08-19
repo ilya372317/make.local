@@ -13,5 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',  'App\Http\Controllers\blog\posts\BlogPostController@archive');
+// Маршруты для блога.
+Route::group(['prefix' => '/', 'namespace' => 'App\Http\Controllers\blog\posts\\'], function(){
+    Route::get('',  'BlogPostController@archive')->name('blog.post.index');
+    Route::get('/post/{id}', 'BlogPostController@singlePost')->name('blog.post.view');
+});
+
 

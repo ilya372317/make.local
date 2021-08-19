@@ -4,6 +4,18 @@
         <div class="row justify-content-right">
             <div class="col-md-12">
                 <div class="card">
+                    @if($errors->any())
+                    <div class="row justify-content-center">
+                        <div class="col-md-11">
+                            <div class="alert alert-danger" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                                    <span aria-hidden="true">☓</span>
+                                </button>
+                                {{ $errors->first() }}
+
+                        </div>
+                    </div>
+                @endif
                     <div class="card-body">
                             <table class="table table-hover">
                                 <thead>
@@ -18,7 +30,7 @@
                                     <tr>
                                         <td>{{$post->user->name}}</td>
                                         <td>
-                                            <a href="#">{{$post->title}}</a>
+                                            <a href="{{route('blog.post.view', $post->id)}}">{{$post->title}}</a>
                                         </td>
                                         <td>{{\Carbon\Carbon::parse($post->published_at)->format('d.m.Y') }}</td>
                                     </tr>
