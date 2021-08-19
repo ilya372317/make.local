@@ -11,6 +11,8 @@ class blogPostReprository extends coreReprository{
         return Model::class;
     }
 
+    // Методы для браузера
+
     public function getForPaginate($itemPerPage = 5){
 
         Paginator::useBootstrap();
@@ -40,6 +42,49 @@ class blogPostReprository extends coreReprository{
 
     // Метод получает данные для вывода одиночной записи
     public function getForView($id){
+
+        $columns = [
+            'id',
+            'user_id',
+            'title',
+            'content_html',
+            'is_published',
+            'published_at',
+        ];
+
+        $item = $this->startCondition()
+                ->select($columns)
+                ->findOrFail($id);
+
+        return $item;
+    }
+
+    // Методы для API
+
+    public function getForApiAll(){
+
+        $columns = [
+            'id',
+            'user_id',
+            'title',
+            'content_html',
+            'is_published',
+            'published_at',
+        ];
+
+        $posts = $this->startCondition()
+                ->select($columns)
+                ->orderBy('id', 'ASC')
+                // Благодоря связи с моделью user, сначала получаем необходимые данные, а потом выгружаем их на страницу
+                ->with(['user' => function($query){
+                    $query->select('id','name');
+                }])
+                ->get();
+
+        return $posts;
+    }
+
+    public function getForApiSingle($id){
 
         $columns = [
             'id',

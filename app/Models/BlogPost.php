@@ -11,7 +11,10 @@ class BlogPost extends Model
     use HasFactory;
 
     protected $fillable = [
-
+        'title',
+        'slug',
+        'content_raw',
+        'is_published',
     ];
 
     public function user(){
