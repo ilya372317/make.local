@@ -35,7 +35,7 @@ class blogPostObserver
     private function setPublishTime(BlogPost $blogPost){
 
         //если пост опубликован, присвоить ему время публикации
-        if (!empty($blogPost->is_published)) {
+        if (empty($blogPost->published_at && $blogPost->is_published)) {
             $blogPost->published_at = Carbon::now();
         }
     }
