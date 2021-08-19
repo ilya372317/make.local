@@ -26,6 +26,7 @@ class blogPostUpdateRequest extends FormRequest
         return [
             'user_id' => 'exists:users,id',
             'title' => 'unique:blog_posts,title',
+            'content' => 'unique:blog_posts,content',
             'slug' => 'unique:blog_posts,slug|unique:blog_posts,slug',
             'is_published' => 'integer'
         ];
@@ -36,6 +37,7 @@ class blogPostUpdateRequest extends FormRequest
         parent::messages();
         return [
             'title.unique' => 'Заголовок записи должен быть уникальным',
+            'content.unique' => 'Контент должен быть уникальным',
             'slug.unique' => 'Индификатор записи должен быть уникальным',
             'is_published.integer' => 'Ошибка публикации',
             'user_id.exists' =>  'Данного пользователя не существует'
