@@ -19,8 +19,7 @@ class CreateBlogPostsTable extends Migration
 
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('content_raw');
-            $table->text('content_html');
+            $table->text('content');
 
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
