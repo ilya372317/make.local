@@ -7,8 +7,6 @@ use App\Http\Requests\blogPostUpdateRequest;
 use App\Http\Resources\blogPostResource;
 use App\Models\BlogPost;
 use App\reprositories\blogPostReprository;
-use Illuminate\Http\Request;
-use Response;
 
 class blogPostController extends baseController
 {
