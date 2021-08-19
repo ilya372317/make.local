@@ -15,6 +15,7 @@ class BlogPost extends Model
         'slug',
         'content_raw',
         'is_published',
+        'user_id'
     ];
 
     public function user(){

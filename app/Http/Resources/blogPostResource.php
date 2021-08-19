@@ -23,6 +23,6 @@ class blogPostResource extends JsonResource
            'is_published' => $this->is_published,
            'published_at' => $this->published_at,
 
-       ]
+       ];
     }
 }

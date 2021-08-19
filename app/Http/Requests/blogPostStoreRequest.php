@@ -24,8 +24,9 @@ class blogPostStoreRequest extends FormRequest
     public function rules()
     {
         return [
+            'user_id' => 'exists:users,id',
             'title' => 'required|string|unique:blog_posts,title',
-            'slug' => 'unique:blog_posts,slug',
+            'slug' => 'unique:blog_posts,slug|unique:blog_posts,slug',
             'content_raw' => 'string|required',
             'is_published' => 'integer'
         ];
@@ -41,7 +42,8 @@ class blogPostStoreRequest extends FormRequest
             'slug.unique' => 'Индификатор записи должен быть уникальным',
             'content_raw.string' => 'Тело записи должно быть строкой',
             'content_raw.required' => 'Тело записи обязательно для заполнения',
-            'is_published' => 'Ошибка публикации'
+            'is_published.integer' => 'Ошибка публикации',
+            'user_id.exists' =>  'Данного пользователя не существует'
         ];
     }
 }
