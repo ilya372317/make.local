@@ -23,13 +23,17 @@ class blogPostController extends baseController
      public function __construct()
      {
 
+        // Подключаем репозиторий
          $this->blogPostReprository = app(blogPostReprository::class);
+
      }
 
     public function index()
     {
+
         $posts = blogPostResource::collection($this->blogPostReprository->getForApiAll());
         return $posts;
+
     }
 
     /**
@@ -38,8 +42,12 @@ class blogPostController extends baseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     // Создаем новый пост.
+     // Логика создания slug, published_at находится в наблюдателе blogPostObserver
     public function store(blogPostStoreRequest $request)
     {
+
         $data = BlogPost::create($request->validated());
 
         $result = new blogPostResource($data);
@@ -55,10 +63,12 @@ class blogPostController extends baseController
      */
     public function show($id)
     {
+
         $item = $this->blogPostReprository
                 ->getForApiSingle($id);
 
         return $item;
+
     }
 
     /**
@@ -75,7 +85,7 @@ class blogPostController extends baseController
                     ->getForApiSingle($id);
 
         $data = $request->validated();
-        $result = $item->update($data);
+        $item->update($data);
 
         return $item;
 

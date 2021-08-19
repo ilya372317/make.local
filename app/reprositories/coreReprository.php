@@ -26,5 +26,4 @@ abstract class coreReprository{
     public function startCondition(){
         return clone $this->model;
     }
-
 }

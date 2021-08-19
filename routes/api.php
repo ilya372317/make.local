@@ -19,6 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// ресурсный маршрут для API
 Route::apiResources([
     'post' => blogPostController::class,
 

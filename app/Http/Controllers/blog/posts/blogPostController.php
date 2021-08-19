@@ -14,8 +14,9 @@ class blogPostController extends baseController
     {
         parent::__construct();
 
-        // Подключаемся к репрозиторию
+        // Подключаемся к репозиторию
         $this->blogPostReprository = app(blogPostReprository::class);
+
     }
 
     // Контроллер вывода всех записей

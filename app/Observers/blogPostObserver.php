@@ -9,16 +9,6 @@ use Illuminate\Support\Str;
 
 class blogPostObserver
 {
-    /**
-     * Handle the BlogPost "created" event.
-     *
-     * @param  \App\Models\BlogPost  $blogPost
-     * @return void
-     */
-    public function created(BlogPost $blogPost)
-    {
-        //
-    }
 
     public function creating(BlogPost $blogPost)
     {
@@ -27,55 +17,11 @@ class blogPostObserver
         $this->setSlug($blogPost);
     }
 
-    /**
-     * Handle the BlogPost "updated" event.
-     *
-     * @param  \App\Models\BlogPost  $blogPost
-     * @return void
-     */
-    public function updated(BlogPost $blogPost)
-    {
-        //
-    }
-
     public function updating(BlogPost $blogPost)
     {
         $this->setPublishTime($blogPost);
         $this->unsetPublishTime($blogPost);
         $this->setSlug($blogPost);
-    }
-
-    /**
-     * Handle the BlogPost "deleted" event.
-     *
-     * @param  \App\Models\BlogPost  $blogPost
-     * @return void
-     */
-    public function deleted(BlogPost $blogPost)
-    {
-        //
-    }
-
-    /**
-     * Handle the BlogPost "restored" event.
-     *
-     * @param  \App\Models\BlogPost  $blogPost
-     * @return void
-     */
-    public function restored(BlogPost $blogPost)
-    {
-        //
-    }
-
-    /**
-     * Handle the BlogPost "force deleted" event.
-     *
-     * @param  \App\Models\BlogPost  $blogPost
-     * @return void
-     */
-    public function forceDeleted(BlogPost $blogPost)
-    {
-        //
     }
 
     private function setSlug(BlogPost $blogPost){
@@ -100,8 +46,5 @@ class blogPostObserver
         if (empty($blogPost->is_published && $blogPost->published_at)) {
             $blogPost->published_at = null;
         }
-
     }
-
-
 }

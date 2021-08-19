@@ -43,6 +43,7 @@ class blogPostReprository extends coreReprository{
     // Метод получает данные для вывода одиночной записи
     public function getForView($id){
 
+        // Колонки для вывода одиночной записи
         $columns = [
             'id',
             'user_id',
@@ -63,6 +64,7 @@ class blogPostReprository extends coreReprository{
 
     public function getForApiAll(){
 
+        // Колонки для получения через API всех записей
         $columns = [
             'id',
             'user_id',
@@ -86,6 +88,7 @@ class blogPostReprository extends coreReprository{
 
     public function getForApiSingle($id){
 
+        // Колонки для получения через API одиночной записи
         $columns = [
             'id',
             'user_id',
